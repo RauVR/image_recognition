@@ -4,7 +4,7 @@ import 'home.dart';
 import 'package:wakelock/wakelock.dart';
 import 'package:get/get.dart';
 
-List<CameraDescription>? camera;
+List<CameraDescription>? cameras;
 
 Future<void> main() async {
 
