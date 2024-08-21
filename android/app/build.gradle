@@ -59,7 +59,7 @@ android {
         }
     }
 
-    appOptions{
+    aaptOptions{
         noCompress 'tflite'
         noCompress 'lite'
     }
