@@ -42,8 +42,8 @@ class _HomeState extends State<Home> {
 
   loadModel()async{
     await Tflite.loadModel(
-      model: 'assets/detect.tflite',
-      labels: 'assets/labelmap.txt',
+      model: 'mobilenet_v1_1.0_224.tflite',
+      labels: 'mobilenet_v1_1.0_224.txt',
     );
   }
 
@@ -80,9 +80,9 @@ class _HomeState extends State<Home> {
     result='';
 
     //for (var response in recognitions!) {
-    recognitions!.forEach((response) {
+    for (var response in recognitions!) {
       result += response['label']+' '+(response['confidence'] as double).toStringAsFixed(2)+'\n\n';
-    });
+    }
 
     setState(() {
       result;
@@ -127,18 +127,18 @@ class _HomeState extends State<Home> {
                         },
                         child: Container(
                           margin: const EdgeInsets.only(top: 65.0),
-                          height: 270,
+                          height: 570,
                           width: 360,
                           child: imgCamera==null?
-                              const SizedBox(
+                          const SizedBox(
                                 height: 270,
                                 width: 360,
                                 child: Icon(Icons.photo_camera_front,color: Colors.pink, size: 60.0,),
-                              ):
-                              AspectRatio(
+                          ):
+                          AspectRatio(
                                 aspectRatio: cameraController!.value.aspectRatio,
                                 child: CameraPreview(cameraController!),
-                              )
+                          )
                         ),
                       ),
                     )
