@@ -42,8 +42,8 @@ class _HomeState extends State<Home> {
 
   loadModel()async{
     await Tflite.loadModel(
-      model: 'mobilenet_v1_1.0_224.tflite',
-      labels: 'mobilenet_v1_1.0_224.txt',
+      model: 'assets/mobilenet_v1_1.0_224.tflite',
+      labels: 'assets/mobilenet_v1_1.0_224.txt',
     );
   }
 
@@ -62,33 +62,35 @@ class _HomeState extends State<Home> {
 
   runModelOnStreamFrames() async
   {
-    var recognitions = await Tflite.runModelOnFrame(
+    if(imgCamera!=null){
+      var recognitions = await Tflite.runModelOnFrame(
 
-      bytesList: imgCamera!.planes.map((plane){
+        bytesList: imgCamera!.planes.map((plane){
           return plane.bytes;
         }).toList(),
-      imageHeight: imgCamera!.height,
-      imageWidth: imgCamera!.width,
-      imageMean: 127.5,
-      imageStd: 127.5,
-      rotation: 90,
-      numResults: 2,
-      threshold: 0.1,
-      asynch: true,
-    );
+        imageHeight: imgCamera!.height,
+        imageWidth: imgCamera!.width,
+        imageMean: 127.5,
+        imageStd: 127.5,
+        rotation: 90,
+        numResults: 2,
+        threshold: 0.1,
+        asynch: true,
+      );
 
-    result='';
+      result='';
 
-    //for (var response in recognitions!) {
-    for (var response in recognitions!) {
-      result += response['label']+' '+(response['confidence'] as double).toStringAsFixed(2)+'\n\n';
+      //for (var response in recognitions!) {
+      recognitions!.forEach((response) {
+        result += response['label']+' '+(response['confidence'] as double).toStringAsFixed(2)+'\n\n';
+      });
+
+      setState(() {
+        result;
+      });
+
+      isWorking=false;
     }
-
-    setState(() {
-      result;
-    });
-
-    isWorking=false;
 
   }
 
@@ -127,7 +129,7 @@ class _HomeState extends State<Home> {
                         },
                         child: Container(
                           margin: const EdgeInsets.only(top: 65.0),
-                          height: 570,
+                          height: 420,
                           width: 360,
                           child: imgCamera==null?
                           const SizedBox(
