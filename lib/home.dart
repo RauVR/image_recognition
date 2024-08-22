@@ -1,5 +1,4 @@
 import 'package:camera/camera.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_recognition/main.dart';
 import 'package:tflite/tflite.dart';
@@ -31,7 +30,7 @@ class _HomeState extends State<Home> {
           if(!isWorking){
             isWorking=true,
             imgCamera=imageFromStream,
-            runModelOnSreamFrames(),
+            runModelOnStreamFrames(),
           }
         });
 
@@ -61,7 +60,7 @@ class _HomeState extends State<Home> {
     cameraController?.dispose();
   }
 
-  runModelOnSreamFrames() async
+  runModelOnStreamFrames() async
   {
     var recognitions = await Tflite.runModelOnFrame(
 
@@ -79,8 +78,9 @@ class _HomeState extends State<Home> {
     );
 
     result='';
-    recognitions!.forEach((response)
-    {
+
+    //for (var response in recognitions!) {
+    recognitions!.forEach((response) {
       result += response['label']+' '+(response['confidence'] as double).toStringAsFixed(2)+'\n\n';
     });
 
@@ -130,10 +130,10 @@ class _HomeState extends State<Home> {
                           height: 270,
                           width: 360,
                           child: imgCamera==null?
-                              Container(
+                              const SizedBox(
                                 height: 270,
                                 width: 360,
-                                child: const Icon(Icons.photo_camera_front,color: Colors.pink, size: 60.0,),
+                                child: Icon(Icons.photo_camera_front,color: Colors.pink, size: 60.0,),
                               ):
                               AspectRatio(
                                 aspectRatio: cameraController!.value.aspectRatio,
