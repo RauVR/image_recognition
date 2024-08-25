@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:wakelock/wakelock.dart';
 import 'home.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
-    //Wakelock.enable(); //mantiene la pantalla encendida
+    Wakelock.enable(); //mantiene la pantalla encendida
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Object Recognition',

@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:image_recognition/main.dart';
-import 'package:tflite/tflite.dart';
+import 'package:tflite_v2/tflite_v2.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
