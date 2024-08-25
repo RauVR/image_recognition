@@ -30,7 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  wakelock: ^0.6.2
+  #wakelock: ^0.6.2
+  wakelock_plus: ^1.2.8
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -66,6 +67,12 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/ssd_mobilenet.tflite
+    - assets/ssd_mobilenet.txt
+    - assets/mobilenet_v1_1.0_224.tflite
+    - assets/mobilenet_v1_1.0_224.txt
+    - assets/yolov2_tiny.tflite
+    - assets/yolov2_tiny.txt
 
   # To add assets to your application, add an assets section, like this:
   # assets:
