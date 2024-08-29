@@ -21,6 +21,10 @@ esto lo hacemos en la siguiente ruta
 /home/raul/.pub-cache/hosted/pub.dev/tflite-1.1.2/android
 o tambien en /home/raul/.pub-cache/hosted/pub.dev/tflite_v2-1.0.0/android
 modificamos el archivo build.gradle
+aqui tambienmodifiicamos la version de gradle
+dependencies {
+classpath 'com.android.tools.build:gradle:7.3.0' // Actualiza la versión del plugin de Gradle
+}
 
 modificamos el archivo build.gradle dentro de la carpeta de nuestro proyecto
 /home/raul/Escritorio/UPC/Moviles/Projects/Flutter/image_recognition/android/app
@@ -36,3 +40,15 @@ en android/build.gradle  poner :
 ext.kotlin_version = '1.8.22' // Usa la versión más reciente
 luego guardar archivo y sincronizar gradle
 File > Sync Project with Gradle Files.
+
+## CAMBIAR LA VERSION DE FLUTTER
+Ubicate en la carpeta que contiene tu SDK flutter que para mi caso viene a siendo la siguiente
+/home/raul/snap/flutter/common/flutter
+Luego hacemos
+- git fetch --all
+- git tag (Esto listará todas las versiones disponibles.)
+- git checkout v2.8.0  (Cambiar a la versión específica)
+- flutter doctor
+- flutter --version
+
+
