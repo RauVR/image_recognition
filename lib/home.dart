@@ -4,7 +4,8 @@ import 'package:image_recognition/main.dart';
 import 'package:tflite_v2/tflite_v2.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  //const Home({super.key});
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
